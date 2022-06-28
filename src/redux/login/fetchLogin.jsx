@@ -99,5 +99,5 @@ export const userLoggout = () => async (dispatch) => {
   await dispatch(removeToken());
   await dispatch(removeUser());
 
-  window.location.pathname = "/login";
+  window.history.pushState(null, null, "/login");
 };
