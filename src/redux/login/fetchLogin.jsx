@@ -1,8 +1,6 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import createAsyncSlice from "../helper/createAsyncSlice";
 import getLocalStorage from "../helper/getLocalStorage";
-import { useNavigate, useLocation } from "react-router-dom";
-import Navigate from "../../helper/Navigate";
 
 const getTokenLocal = getLocalStorage("token", null);
 
