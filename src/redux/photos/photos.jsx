@@ -19,6 +19,7 @@ const photos_slice = createAsyncSlice({
     pushPhotos(state, { payload }) {
       state.photos.push(...payload);
       state.page++;
+      state.infinite = true;
       if (payload.length <= 1) state.infinite = false;
     },
     resetPhotos(state) {
