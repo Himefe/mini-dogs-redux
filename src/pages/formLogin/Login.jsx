@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./login.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/login/fetchLogin";
-import Error from "../../helper/error";
+import Error from "../../helper/Error";
 import { useNavigate } from "react-router-dom";
 
 const Login = function () {
