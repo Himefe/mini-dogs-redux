@@ -1,6 +1,7 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import createAsyncSlice from "../helper/createAsyncSlice";
 import getLocalStorage from "../helper/getLocalStorage";
+import { resetPhotos } from "../photos/photos";
 
 const getTokenLocal = getLocalStorage("token", null);
 
@@ -98,6 +99,7 @@ export const autoLogin = () => async (dispatch, getState) => {
 export const userLoggout = () => async (dispatch) => {
   await dispatch(removeToken());
   await dispatch(removeUser());
+  await dispatch(resetPhotos());
 
   // location.assign(window.location.origin + "/login");
 };

@@ -21,12 +21,16 @@ const photos_slice = createAsyncSlice({
       state.page++;
       if (payload.length <= 1) state.infinite = false;
     },
+    resetPhotos(state) {
+      state.page = 1;
+      state.photos = [];
+    },
   },
 });
 
 const fetchPhotos = photos_slice.asyncAction;
 
-export const { pushPhotos } = photos_slice.actions;
+export const { pushPhotos, resetPhotos } = photos_slice.actions;
 
 export const reducerPhotoPage = combineReducers({
   fetchPhoto: photos_slice.reducer,
