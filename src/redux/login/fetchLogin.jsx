@@ -68,7 +68,6 @@ const user = createAsyncSlice({
 
 const { removeUser } = user.actions;
 
-console.log(removeUser);
 const { removeToken } = token.actions;
 
 const fetchToken = token.asyncAction;
