@@ -14,9 +14,9 @@ function Content() {
     dispatch(fetcherPhotos(state.reducerPhotoPage.fetchPhoto.page));
   }, []);
 
-  const handleFetchPhoto = () => {
+  const handleFetchPhoto = async () => {
     dispatch(incrementaPage());
-    dispatch(fetcherPhotos(state.reducerPhotoPage.fetchPhoto.page));
+    dispatch(fetcherPhotos(state.reducerPhotoPage.fetchPhoto.page + 1));
   };
 
   return (
@@ -30,9 +30,11 @@ function Content() {
             : null}
         </ul>
         {state.reducerPhotoPage.fetchPhoto.loading ? <Loading /> : null}
-        <div className={styles.buttonArea}>
-          <button onClick={() => handleFetchPhoto()}>+</button>
-        </div>
+        {state.reducerPhotoPage.fetchPhoto.infinite ? (
+          <div className={styles.buttonArea}>
+            <button onClick={() => handleFetchPhoto()}>+</button>
+          </div>
+        ) : null}
       </div>
     </section>
   );

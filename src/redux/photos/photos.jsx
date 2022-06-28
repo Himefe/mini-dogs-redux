@@ -6,6 +6,7 @@ const photos_slice = createAsyncSlice({
   initialState: {
     page: 1,
     photos: [],
+    infinite: true,
   },
   fetchConfig: (page) => ({
     url: `https://dogsapi.origamid.dev/json/api/photo/?_page=${page}&_total=3&_user=0`,
@@ -15,8 +16,9 @@ const photos_slice = createAsyncSlice({
     },
   }),
   reducers: {
-    pushPhotos({ photos }, { payload }) {
-      photos.push(...payload);
+    pushPhotos(state, { payload }) {
+      state.photos.push(...payload);
+      if (payload.length === 1) state.infinite = false;
     },
     incrementaPage(page) {
       page.page++;
@@ -36,6 +38,9 @@ export const fetcherPhotos =
   (page = 1) =>
   async (dispatch) => {
     const { payload } = await dispatch(fetchPhotos(page));
+    if (payload.length >= 1) {
+      dispatch(pushPhotos(payload));
+    }
 
-    dispatch(pushPhotos(payload));
+    return payload;
   };
