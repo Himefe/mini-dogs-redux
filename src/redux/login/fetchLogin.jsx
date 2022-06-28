@@ -98,12 +98,8 @@ export const autoLogin = () => async (dispatch, getState) => {
 };
 
 export const userLoggout = () => async (dispatch) => {
-  // const navigate = useNavigate();
-
   await dispatch(removeToken());
   await dispatch(removeUser());
-  // <Navigate path="/login" />;
-  // const location = useLocation();
-  // location("/login");
+
   window.location.pathname = "/login";
 };
