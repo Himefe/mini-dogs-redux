@@ -99,5 +99,5 @@ export const userLoggout = () => async (dispatch) => {
   await dispatch(removeToken());
   await dispatch(removeUser());
 
-  window.history.pushState(null, null, "/login");
+  location.reload();
 };
