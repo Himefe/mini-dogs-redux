@@ -18,7 +18,7 @@ const photos_slice = createAsyncSlice({
   reducers: {
     pushPhotos(state, { payload }) {
       state.photos.push(...payload);
-      if (payload.length >= 1) state.infinite = false;
+      if (payload.length <= 1) state.infinite = false;
     },
     incrementaPage(page) {
       page.page++;
