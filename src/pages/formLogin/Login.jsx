@@ -21,7 +21,7 @@ const Login = function () {
       const responseLogin = await dispatch(login({ username, password }));
 
       if (responseLogin && typeof responseLogin.payload === "object") {
-        navigate("/");
+        navigate("/", { replace: true });
       }
     };
     dispatcherLogin();

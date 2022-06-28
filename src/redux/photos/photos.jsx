@@ -18,17 +18,15 @@ const photos_slice = createAsyncSlice({
   reducers: {
     pushPhotos(state, { payload }) {
       state.photos.push(...payload);
+      state.page++;
       if (payload.length <= 1) state.infinite = false;
-    },
-    incrementaPage(page) {
-      page.page++;
     },
   },
 });
 
 const fetchPhotos = photos_slice.asyncAction;
 
-export const { pushPhotos, incrementaPage } = photos_slice.actions;
+export const { pushPhotos } = photos_slice.actions;
 
 export const reducerPhotoPage = combineReducers({
   fetchPhoto: photos_slice.reducer,

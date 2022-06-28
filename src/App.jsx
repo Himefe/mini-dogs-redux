@@ -20,8 +20,6 @@ function App() {
       const responseAutoLogin = await dispatch(autoLogin());
       if (typeof responseAutoLogin?.payload === "object") {
         navigate("./");
-      } else {
-        navigate("./login");
       }
     };
     dispatcherAutoLogin();
@@ -33,7 +31,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Content />} />
-          <Route path="/login" element={<Login />} />
+          {/* <Route path="/login" element={<Login />} /> */}
         </Routes>
       </div>
     </main>

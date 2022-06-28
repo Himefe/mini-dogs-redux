@@ -1,24 +1,27 @@
 import React from "react";
-import { fetcherPhotos, incrementaPage } from "../../redux/photos/photos";
+import { fetcherPhotos } from "../../redux/photos/photos";
 import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./content.module.css";
 import ListPhoto from "../../Components/ListPhoto/ListPhoto";
 import Loading from "../../helper/Loading";
+import Login from "../formLogin/Login";
 
 function Content() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
   React.useEffect(() => {
-    dispatch(fetcherPhotos(state.reducerPhotoPage.fetchPhoto.page));
-  }, [state.reducerPhotoPage.fetchPhoto.page]);
+    if (state.reducerLogin.user.data)
+      dispatch(fetcherPhotos(state.reducerPhotoPage.fetchPhoto.page));
+  }, [state.reducerLogin.user.data]);
 
   const handleFetchPhoto = async () => {
-    dispatch(incrementaPage());
+    if (state.reducerLogin.user.data)
+      dispatch(fetcherPhotos(state.reducerPhotoPage.fetchPhoto.page));
     // dispatch(fetcherPhotos(state.reducerPhotoPage.fetchPhoto.page));
   };
-
+  if (!state.reducerLogin.user.data) return <Login />;
   return (
     <section className={styles.sectionContent}>
       <div className={styles.container}>
