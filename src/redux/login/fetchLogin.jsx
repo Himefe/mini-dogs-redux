@@ -1,7 +1,8 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import createAsyncSlice from "../helper/createAsyncSlice";
 import getLocalStorage from "../helper/getLocalStorage";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import Navigate from "../../helper/Navigate";
 
 const getTokenLocal = getLocalStorage("token", null);
 
@@ -97,7 +98,12 @@ export const autoLogin = () => async (dispatch, getState) => {
 };
 
 export const userLoggout = () => async (dispatch) => {
+  // const navigate = useNavigate();
+
   await dispatch(removeToken());
   await dispatch(removeUser());
-  window.location.href = window.origin + "/login";
+  // <Navigate path="/login" />;
+  // const location = useLocation();
+  // location("/login");
+  window.location.pathname = "/login";
 };
