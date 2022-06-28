@@ -1,0 +1,28 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.header span.loading {
+  background-color: #ff0f;
+}
+
+.header span.logado {
+  background-color: #00ff00;
+  transition: all 0.3s ease-in-out;
+}
+
+.header span.logado:hover {
+  background-color: red;
+}

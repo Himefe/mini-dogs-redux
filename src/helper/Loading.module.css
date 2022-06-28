@@ -1,0 +1,26 @@
+.loading {
+  height: 2px;
+  background-color: #000;
+  overflow: hidden;
+  max-width: 35%;
+  margin: 2rem auto;
+  position: relative;
+}
+
+.loading::after {
+  content: "";
+  display: inline-block;
+  width: 70%;
+  height: 2px;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  transform: translate(-200%, 0);
+  animation: loading 0.8s ease-in-out forwards infinite;
+}
+
+@keyframes loading {
+  to {
+    transform: translate(200%, 0);
+  }
+}
