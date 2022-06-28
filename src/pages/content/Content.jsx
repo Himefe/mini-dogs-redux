@@ -12,11 +12,11 @@ function Content() {
 
   React.useEffect(() => {
     dispatch(fetcherPhotos(state.reducerPhotoPage.fetchPhoto.page));
-  }, []);
+  }, [state.reducerPhotoPage.fetchPhoto.page]);
 
   const handleFetchPhoto = async () => {
     dispatch(incrementaPage());
-    dispatch(fetcherPhotos(state.reducerPhotoPage.fetchPhoto.page + 1));
+    // dispatch(fetcherPhotos(state.reducerPhotoPage.fetchPhoto.page));
   };
 
   return (
